@@ -1,0 +1,18 @@
+{
+	"name": "decodellc/msp",
+	"description": "SMTP and POP3 wrappers on PHP.",
+	"keywords": ["php", "mail", "imap", "pop3", "smtp", "library"],
+	"homepage": "https://github.com/DecodeLLC/msp",
+	"license": "MIT",
+	"authors": [{
+		"name": "Anatoly Fenric",
+		"homepage": "https://anatoly.fenric.ru/"
+	}],
+	"require": {
+		"php": ">=5.6.0",
+		"php-mime-mail-parser/php-mime-mail-parser": "dev-master"
+	},
+	"autoload": {
+		"files": ["autoload.php"]
+	}
+}

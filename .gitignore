@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+
+/composer
+/composer.phar
+/composer.lock
+
+/vendor/*
+
+!.gitkeep
+!*.dist

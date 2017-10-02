@@ -1,0 +1,45 @@
+#!/usr/bin/env php
+<?php
+
+use DecodeLLC\MSP\Connector;
+use DecodeLLC\MSP\Driver\IMAP;
+use DecodeLLC\MSP\Driver\POP3;
+use DecodeLLC\MSP\Driver\SMTP;
+
+chdir(__DIR__);
+set_time_limit(0);
+
+require_once __DIR__ . '/../autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$username = 'test@gmail.com';
+$password = 'secret';
+
+$connection = new Connector(new IMAP('ssl://imap.gmail.com:993'));
+
+if ($connection->connect(10))
+{
+	if ($connection->getDriver()->login($username, $password))
+	{
+		if ($connection->getDriver()->select('INBOX'))
+		{
+			if ($uids = $connection->getDriver()->search(new DateTime('1 day ago')))
+			{
+				foreach ($uids as $uid)
+				{
+					if ($message = $connection->getDriver()->fetch($uid))
+					{
+						echo $message->getHeader('to'), PHP_EOL;
+						echo $message->getHeader('from'), PHP_EOL;
+						echo $message->getHeader('subject'), PHP_EOL;
+						echo PHP_EOL;
+					}
+				}
+			}
+		}
+	}
+
+	$connection->disconnect();
+}
+
+echo print_r($connection->getDriver()->getConsole(), true), PHP_EOL;
