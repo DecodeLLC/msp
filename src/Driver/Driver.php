@@ -427,6 +427,21 @@ abstract class Driver
 	 * {@description}
 	 *
 	 * @access  public
+	 * @return  array
+	 */
+	final public function flushConsole()
+	{
+		$console = $this->console;
+
+		$this->console = [];
+
+		return $console;
+	}
+
+	/**
+	 * {@description}
+	 *
+	 * @access  public
 	 * @return  string
 	 *
 	 * @see     https://ru.wikipedia.org/wiki/IMAP
