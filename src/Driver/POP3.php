@@ -58,6 +58,49 @@ class POP3 extends Driver
 	 * {@description}
 	 *
 	 * @access  public
+	 * @return  mixed
+	 */
+	public function list()
+	{
+		if ($this->sendCommand('LIST'))
+		{
+			if (preg_match_all('/^(?<numbers>[0-9]+)/m', $this->getStreamContentWithoutFirstRow(), $match))
+			{
+				return $match['numbers'];
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * {@description}
+	 *
+	 * @param   int   $number
+	 *
+	 * @access  public
+	 * @return  mixed
+	 */
+	public function fetch($number)
+	{
+		$context = ['number' => $number];
+
+		if ($this->sendCommand('RETR {number}', $context))
+		{
+			$parser = new Parser();
+
+			$parser->setText($this->getStreamContentWithoutFirstRow());
+
+			return $parser;
+		}
+
+		return false;
+	}
+
+	/**
+	 * {@description}
+	 *
+	 * @access  public
 	 * @return  string
 	 */
 	public function getSocket()
