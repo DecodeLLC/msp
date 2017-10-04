@@ -443,6 +443,28 @@ abstract class Driver
 	 *
 	 * @access  public
 	 * @return  string
+	 */
+	final public function dumpConsole()
+	{
+		return implode(PHP_EOL, $this->getConsole());
+	}
+
+	/**
+	 * {@description}
+	 *
+	 * @access  public
+	 * @return  string
+	 */
+	final public function dumpFlushConsole()
+	{
+		return implode(PHP_EOL, $this->flushConsole());
+	}
+
+	/**
+	 * {@description}
+	 *
+	 * @access  public
+	 * @return  string
 	 *
 	 * @see     https://ru.wikipedia.org/wiki/IMAP
 	 */
