@@ -108,8 +108,6 @@ class IMAP extends Driver
 	 *
 	 * @access  public
 	 * @return  mixed
-	 *
-	 * @see     https://github.com/php-mime-mail-parser/php-mime-mail-parser
 	 */
 	public function fetch($uid)
 	{
