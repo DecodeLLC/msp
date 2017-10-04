@@ -60,7 +60,7 @@ class POP3 extends Driver
 	 * @access  public
 	 * @return  mixed
 	 */
-	public function list()
+	public function all()
 	{
 		if ($this->sendCommand('LIST'))
 		{
