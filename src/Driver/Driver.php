@@ -127,6 +127,47 @@ abstract class Driver
 	/**
 	 * {@description}
 	 *
+	 * @access  public
+	 * @return  bool
+	 */
+	final public function isSecureConnection()
+	{
+		if ($scheme = parse_url($this->getSocket(), PHP_URL_SCHEME))
+		{
+			if (strcasecmp($scheme, 'SSL') === 0)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * {@description}
+	 *
+	 * @access  public
+	 * @return  mixed
+	 */
+	final public function getHostConnection()
+	{
+		return parse_url($this->getSocket(), PHP_URL_HOST);
+	}
+
+	/**
+	 * {@description}
+	 *
+	 * @access  public
+	 * @return  mixed
+	 */
+	final public function getPortConnection()
+	{
+		return parse_url($this->getSocket(), PHP_URL_PORT);
+	}
+
+	/**
+	 * {@description}
+	 *
 	 * @param   int   $timeout
 	 *
 	 * @access  public
