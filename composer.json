@@ -10,7 +10,7 @@
 	}],
 	"require": {
 		"php": ">=5.6.0",
-		"php-mime-mail-parser/php-mime-mail-parser": "dev-master"
+		"decodellc/php-mime-mail-parser": "dev-master"
 	},
 	"autoload": {
 		"files": ["autoload.php"]
